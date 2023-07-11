@@ -8,9 +8,13 @@ Put 'casal2.exe', 'config.csl2' and the four .dll files in the three directories
 Run the 3 models with all recruitment_multipliers in population.csl2 equal to 1.0 (each model will start at a different random seed) from the console using the following commands:
 
 cd 'localpath'\biom
+
 casal2 -r >> krill.r.txt
+
 casal2 -e >> krill.e.txt
-casal2 -m >> krill_mcmc.m.txt 
+
+casal2 -m >> krill_mcmc.m.txt
+
 casal2 -r -i samples.1 -t >> krill_samples.txt
 
 where 'localpath' is the local path to each of the directories containing three 'biom' subdirectories and other files.
