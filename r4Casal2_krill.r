@@ -152,4 +152,5 @@ OUT
 krill_mpd$Recruitment$standardised_recruitment_multipliers
 krill_mpd$Recruitment$recruitment_multipliers
 krill_mpd$Recruitment$true_ycs
+krill_mpd$Recruitment$standardise_years[17:36]
 krill_mpd$Recruitment$recruitment_multipliers[17:36]
