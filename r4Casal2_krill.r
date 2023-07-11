@@ -1,5 +1,5 @@
 # modified from C. Marsh code at https://niwafisheriesmodelling.github.io/r4Casal2/mcmc.html)
-# cloned and modified r4Casal2 from 'https://github.com/NIWAFisheriesModelling/r4Casal2'
+# and 'https://github.com/NIWAFisheriesModelling/r4Casal2'
 
  rm(list=ls())
  lib.path <- 'c:/zot/Casal2/2023/'
@@ -14,10 +14,10 @@ library(reshape2)
 library(tidyr)
 library(r4Casal2)
 
-ch.names <- c('500K_long.a','500K_long.b','500K_long.c')           # identically configured model names for mcmc chains
-wd <- 'C:/zot/Casal2/2023/7jul/jul10/'              # working directory for mcmc chains
-current.chain <- '500K_long.c'                           # chain to be plotted
-wd2 <- paste(wd,current.chain,'/biom/',sep='')      # working directory for Casal2 input files
+ch.names <- c('0K.a','0K.b','0K.c')            # identically configured model names for mcmc chains
+wd <- 'C:/zot/Casal2/2023/7jul/jul10/'         # working directory for mcmc chains
+current.chain <- '0K.a'                        # chain to be plotted
+wd2 <- paste(wd,current.chain,'/biom/',sep='') # working directory for Casal2 input files
 
 setwd(wd)
 
