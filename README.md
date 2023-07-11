@@ -25,3 +25,5 @@ The runs with all recruitment_multipliers equal to 1 will produce a constant num
 In a second set of runs, enter the recruitment variability from the first 0 catch year for 1992-2011 ('recruitment_multipliers[17:36]') as the 'recruitment_multipliers' for the last 20 projection years in 'population.csl2'. The '600K' directory contains amodel with 600 tonnes catch in 20 future years with recruitment multipliers from the 0 catch model during 1992-2011.
 
 Once the runs are finished the mcmc samples of the spawning biomass posterior distribution can be sampled and plotted, and the CCAMLR Decision rules applied, using 'r4Casal2_krill.r'. Paths in 'r4Casal2_krill.r' will need to be set to the local file structure. MPD values may be plotted using 'https://github.com/us-amlr/Casal2-krill-modelR_krill_figs.rmd'.
+
+The spawning biomasses derived from MCMC sampling with no future catches and all recruitment multipiers = 1.0 (file 0K.a.pdf) and for 600 tonnes catch with recruitment multipliers for the projection years taken from observed years 1992 to 2011 (600K.a.pdf) are illustrated.
