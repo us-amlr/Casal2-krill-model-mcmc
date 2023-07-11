@@ -1,7 +1,7 @@
 # Casal2-krill-model-update
  Adds analysis of spawning stock biomass and CCAMLR decision rules to 'us-amlr/Casal2-krill-model'
  
-This repository contains updates to the Casal2 krill model described in 'https://github.com/us-amlr/Casal2-krill-model'. These updates use 'r4Casal2_krill.r' to evaluate derived parrameters for spawning stock biomass and calculate the CCAMLR 'depletion' and 'escapement' decision rules in order to define precautionary yield.
+This repository contains updates to the Casal2 krill model described in 'https://github.com/us-amlr/Casal2-krill-model'. These updates use 'r4Casal2_krill.r' to evaluate derived parameters for spawning stock biomass and calculate the CCAMLR 'depletion' and 'escapement' decision rules in order to define precautionary yield.
 
 To run the model place three sets of the files in the 'biom' directory in differently labeled directories such as 'a', 'b' and 'c'. I label the directories with the catch as well, i.e. '0K.a' for the first directory with 0 tonnes catch.
 Put 'casal2.exe', 'config.csl2' and the four .dll files in the three directories containing the 'biom' subdirectory.
@@ -20,4 +20,4 @@ The runs with all recruitment_multipliers equal to 1 will produce a constant num
 
 In a second set of runs, enter the recruitment variability from the first 0 catch year for 1992-2011 ('recruitment_multipliers[17:36]') as the 'recruitment_multipliers' for the last 20 projection years in 'population.csl2'.
 
-Once the runs are finished the mcmc samples of the spawning biomass posterior distribution can be sampled and plotted, and the CCAMLR Decision rules applied, using 'r4Casal2_krill.r'. MPD values may be plotted using 'R_krill_figs.rmd'.
+Once the runs are finished the mcmc samples of the spawning biomass posterior distribution can be sampled and plotted, and the CCAMLR Decision rules applied, using 'r4Casal2_krill.r'. MPD values may be plotted using 'https://github.com/us-amlr/Casal2-krill-modelR_krill_figs.rmd'.
