@@ -1,5 +1,5 @@
-# Casal2-krill-model-update
- Adds analysis of spawning stock biomass and application of CCAMLR decision rules to 'us-amlr/Casal2-krill-model'
+# Casal2-krill-model-mcmc
+ Adds MCMC analysis of spawning stock biomass and application of CCAMLR decision rules to 'us-amlr/Casal2-krill-model'
  
 This repository updates the Casal2 krill model described in 'https://github.com/us-amlr/Casal2-krill-model'. These updates use 'r4Casal2_krill.r' to evaluate derived parameters for spawning stock biomass and calculate the CCAMLR 'depletion' and 'escapement' decision rules in order to define precautionary yield.
 
