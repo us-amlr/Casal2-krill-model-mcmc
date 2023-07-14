@@ -3,7 +3,7 @@
  
 This repository updates the Casal2 krill model described in 'https://github.com/us-amlr/Casal2-krill-model'. The update uses 'r4Casal2_krill.r' to evaluate derived parameters for spawning stock biomass and calculates the CCAMLR 'depletion' and 'escapement' decision rules in order to define precautionary yield.
 
-To run the model place three sets of the files in the 'biom' directory in differently labeled directories such as 'a', 'b' and 'c'. I label the directories with the catch as well, i.e. '0K.a' for the first directory with 0 tonnes catch.
+To run the model place three sets of the files in the 'biom' directory in differently labeled directories such as 'a', 'b' and 'c'. I label the directories with the projected future catches as well, i.e. '0K.a' for the first directory with 0 tonnes of future catches.
 
 Put 'casal2.exe', 'config.csl2' and the four compressed files in the 'dlls' directory in the three directories containing the 'biom' subdirectories.
 Run the 3 chains with all recruitment_multipliers in population.csl2 equal to 1.0 (each model will start at a different random seed) from the console using the following commands:
