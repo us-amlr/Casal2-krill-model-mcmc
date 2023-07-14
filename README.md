@@ -30,4 +30,4 @@ Once the runs are finished the mcmc samples of the spawning biomass posterior di
 
 The spawning biomasses derived from MCMC sampling with no future catches and all recruitment multipiers = 1.0 (file SSB_0K.a.pdf) and for 600 tonnes catch with recruitment multipliers for the projection years taken from observed years 1992 to 2011 (SSB_600K.a.pdf) are illustrated.
 
-The rhats directory shows the effect of increasing MCMC sample size from 110,000 (25 minutes run time) to 11,000,000 (47 hours run time) on the Rhats diagnostic plot from the rstan library.
+The rhats directory shows the effect of increasing MCMC sample size from 110,000 (25 minutes run time) to 11,000,000 (47 hours run time) on the Rhats diagnostic plot from the rstan library and on the CCAMLR decision rule for escapement.
