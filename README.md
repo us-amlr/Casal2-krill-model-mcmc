@@ -17,7 +17,7 @@ and the simplex score is:
 
 (2 x 53) -(2 x 87.5165) = -69.033.
 
-This difference of over 180 AIC between the configurations indicates the non-simplex model is a much better representation of these data.
+This difference of over 180 AIC between the configurations indicates the non-simplex model is a much better representation of these data than the simplex model.
 
 To run the models place three sets of the files in the 'biom' directory in differently labeled directories such as 'a', 'b' and 'c'. I label the directories with the projected future catches as well, i.e. '0K.a' for the first directory with 0 tonnes of future catches.
 
