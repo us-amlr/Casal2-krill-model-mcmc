@@ -5,6 +5,20 @@ This repository updates the pilot Casal2 krill model described in 'https://githu
 
 'SSB_0K.a.pdf' is a plot of the spawning stock biomass estimates derived from MCMC sampling during the period from 1976-2021 with reported fishery catches in the model. All recruitment multipiers were initialized to 1.0 and zero future catches were projected forward from 2022 to 2041. 'SSB_600K.a.pdf' shows the model spawning stock biomass with 600 tonnes annual yields projected forward from 2022 to 2041. Recruitment multipliers for the projection years were taken from the estimates for the observed years 1992 to 2011 (SSB_600K.a.pdf). These model outputs can be recreated using the files in this repository.
 
+The repository contains two alternative versions of the krill model. The output files for the first model are in the 'biom' directory and the input files are in 'biom/config'. The second model alternative uses the simplex transformation to estimate recruitment multipliers. Inputs and outputs for this configuration are found in the 'simplex_rec_multipliers' directory.
+
+The two configurations produce different results. Because the data and data weightings are the same for the two configurations, they can be compared using AIC. AIC = 2K -2ln(L) where K is the number of estimated parammeters and ln(L) is the log-likelihood. 
+
+In each of the two configurations the negative log-likelihood is reported in the 'krill.e.txt' file labeled as 'total_score'. This score is -181.115 for the non-simplex model and -87.5165 for the simplex model. The non-simplex model estimates 55 parameters and the non-simplex model estimates 53. Hence the non-simplex AIC score is:
+
+(2*55) -(2*181.115) = -252.23 
+
+and the simplex score is:
+
+(2*53) -(2*87.5165) = -69.033.
+
+This difference of over 180 AIC between the configurations indicates the non-simplex model is a much better representation of these data.
+
 To run the models place three sets of the files in the 'biom' directory in differently labeled directories such as 'a', 'b' and 'c'. I label the directories with the projected future catches as well, i.e. '0K.a' for the first directory with 0 tonnes of future catches.
 
 Put 'casal2.exe', 'config.csl2' and the four compressed files in the 'dlls' directory in the three directories containing the 'biom' subdirectories.
