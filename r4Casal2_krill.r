@@ -1,11 +1,19 @@
-# modified from C. Marsh code at https://niwafisheriesmodelling.github.io/r4Casal2/mcmc.html)
-# and 'https://github.com/NIWAFisheriesModelling/r4Casal2'
 
- rm(list=ls())
- lib.path <- 'c:/zot/Casal2/2023/'
- path <- paste(lib.path,'R-Libraries/R/',sep='')
- r.scrpts <- dir(path)
- for(i in 1:length(r.scrpts))
+# modified from C. Marsh code at https://niwafisheriesmodelling.github.io/r4Casal2/mcmc.html)
+# and from 'https://github.com/NIWAFisheriesModelling/r4Casal2'
+
+rm(list=ls())
+wd <- 'C:/zot/Casal2/2023/8aug/aug21/rec_mult_600K_h0.9x30/'              # working directory for mcmc chains
+ch.names <- c('600K.a','600K.b','600K.c')           # directories containing identically configured mcmc chains
+n.ch <- length(ch.names)                            # number of chains
+current.chain <- '600K.c'                           # chain to be plotted
+wd2 <- paste(wd,current.chain,'/biom/',sep='')      # directory for Casal2 outputs to be plotted
+setwd(wd)
+
+lib.path <- 'c:/zot/Casal2/2023/'
+path <- paste(lib.path,'R-Libraries/R/',sep='')
+r.scrpts <- dir(path)
+for(i in 1:length(r.scrpts))
    source(paste(path,r.scrpts[i],sep=''))
 library(knitr)
 library(ggplot2)
@@ -14,12 +22,6 @@ library(reshape2)
 library(tidyr)
 library(r4Casal2)
 
-ch.names <- c('0K.a','0K.b','0K.c')            # identically configured model names for mcmc chains
-wd <- 'C:/zot/Casal2/2023/7jul/jul10/'         # working directory for mcmc chains
-current.chain <- '0K.a'                        # chain to be plotted
-wd2 <- paste(wd,current.chain,'/biom/',sep='') # working directory for Casal2 input files
-
-setwd(wd)
 
 mcmc.nm <- mcmc_post <- list()
 for(i.ch in 1:(length(ch.names))){
@@ -50,9 +52,6 @@ rhats = apply(bayes_array, MARGIN = 3, Rhat)
 n_eff_bulk = apply(bayes_array, MARGIN = 3, ess_bulk)
 n_eff_tail = apply(bayes_array, MARGIN = 3, ess_tail)
 
-pdf(file = paste(wd,'mcmc_rhat_',current.chain,'.pdf',sep=''))
-mcmc_rhat(rhats)
-graphics.off()
 
 # set probabilities to calculate from mcmc samples
 p <- c(0.025, 0.5, 0.975) ## confidence intervals
@@ -88,6 +87,13 @@ quantile_ssb_df = ssbs %>%
   summarize_at(vars(values), p_funs)
 quantile_ssb_df$years = as.numeric(quantile_ssb_df$years)
 
+# get annual recruitments
+recruits <- cas2_tab$Recruitment[[2]][substr(names(cas2_tab$Recruitment[[2]]),1,8) == 'recruits']
+# calculate mcmc confidence intervals for recruitment
+quantile_recruits_df <- t(apply(recruits,2,quantile,probs=p))
+
+
+
 # calculate mpd estimates of median spawning biomasses
 # (note that get_derived_quanitites does not produce uncertainty estimates for mpds)
 krill_mpd = extract.mpd(paste(wd2,'krill.e.txt',sep='')) # extract mpd values at this location
@@ -97,48 +103,18 @@ quantile_ssb_mpd_df = ssbs_mpd %>%
   summarize_at(vars(values), p_funs)
 quantile_ssb_mpd_df$years = as.numeric(quantile_ssb_mpd_df$years)
 
-# plot selectivities
-pdf(file = paste(wd,'selectivies_',current.chain,'.pdf',sep=''))
-par(cex=1.3)
-plot(names(krill_mpd$krillFSel$Values),krill_mpd$krillFSel$Values, 
-  main='Estimate Krill Selectivity',xlab = 'Length (mm)',ylab = 'Length Selectivity',type='l',lwd=3,col='red')
-  lines(names(krill_mpd$trawlSel$Values),krill_mpd$trawlSel$Values,col='blue',lwd=3,lty=1)
-  lines(names(krill_mpd$AMLR_Sel$Values),krill_mpd$AMLR_Sel$Values,col='blue',lwd=3,lty=2)
-  lines(names(krill_mpd$FbiomSel$Values),krill_mpd$FbiomSel$Values,col='red',lwd=3,lty=2)
-  legend(6,0.4,lty=c(1,1,2,2),col=c('red','blue','blue','red'),
-    c('Fishery_lfs','AMLR_lfs','AMLRacoustics','FisheryAcoustics'),lwd=3,cex=0.8)
-graphics.off()
-
-# plot median and 95% CIs for mcmc estimates ssbs, overlay mpd estimates of medians
-pdf(file=paste('SSB_',current.chain,'.pdf',sep=''))
-par(cex=1.2)
-y.lim <-c(0,max(1,quantile_ssb_df$upp))
-plot(quantile_ssb_df$years,quantile_ssb_df$mid,type='l',lwd=3,ylim=y.lim,
-  xlab= 'Year',ylab='SSB')
-lines(quantile_ssb_df$years,quantile_ssb_df$low,lwd=3)
-lines(quantile_ssb_df$years,quantile_ssb_df$upp,lwd=3)
-polygon(c(quantile_ssb_df$years,rev(quantile_ssb_df$years)),
-  c(quantile_ssb_df$mid,rev(quantile_ssb_df$upp)),col='light grey')
-polygon(c(quantile_ssb_df$years,rev(quantile_ssb_df$years)),
-  c(quantile_ssb_df$mid,rev(quantile_ssb_df$low)),col='light grey')
-lines(quantile_ssb_df$years,quantile_ssb_df$mid,lwd=3)
-abline(h=median(cas2_tab$summary$values[[1]]),lwd=2,lty=2)
-points(quantile_ssb_mpd_df$years,quantile_ssb_mpd_df$mid,col='red',pch=19)
-segments(
-  quantile_ssb_mpd_df$years,quantile_ssb_mpd_df$low, 
-  quantile_ssb_mpd_df$years,quantile_ssb_mpd_df$upp, 
-  lwd=2,col='red')
-graphics.off()
+median(cas2_tab$summary$values[[1]]) # B0 mcmc median value
 
 # Decision Rules
-Gamma1 <- ssbs %>% group_by(years) %>% 
-	  summarize(Dep=min(ssbs$values/ssbs$B0)) %>% 
+Gamma1 <- ssbs %>% group_by(iteration) %>% 
+          filter(years > 2021) %>%
+	  summarize(Dep=min(values/B0)) %>% 
 	  summarize(Pr=mean(Dep < 0.2))
 Gamma1
 
 Gamma2 <- ssbs %>% 
 	filter(years %in% max(years)) %>% 
-	summarise(ssb=median(values),ssb0=median(cas2_tab$summary$values[[1]]))
+	summarise(ssb=median(values),ssb0=median(B0))
 Gamma2$Escapement<-Gamma2$ssb/Gamma2$ssb0
 Gamma2
 
@@ -152,5 +128,8 @@ OUT
 krill_mpd$Recruitment$standardised_recruitment_multipliers
 krill_mpd$Recruitment$recruitment_multipliers
 krill_mpd$Recruitment$true_ycs
-krill_mpd$Recruitment$standardise_years[17:36]
+krill_mpd$Recruitment$model_year[17:36]
 krill_mpd$Recruitment$recruitment_multipliers[17:36]
+
+rhats[order(rhats,decreasing=TRUE)]
+median(cas2_tab$summary$values[[1]]) # B0
