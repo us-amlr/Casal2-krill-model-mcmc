@@ -1,7 +1,7 @@
 # Casal2-krill-model-mcmc
 MCMC sampling of recruitment, spawning stock biomass and the application of CCAMLR decision rules are added to the Casal2 model for Antarctic krill in Subarea 48.1
  
-This repository updates the pilot Casal2 krill model described in 'https://github.com/us-amlr/Casal2-krill-model'. The update uses 'r4Casal2_krill.r' to evaluate derived parameters for spawning stock biomass and calculates the CCAMLR 'depletion' and 'escapement' decision rules in order to define precautionary yield for the Antarctic krill fishery in CCAMLR Subarea 48.1. After 'r4Casal2_krill.r' is applied to the Casal2 outputs the results can be plotted using 'r4Casal2_krilPLOTS.r'.
+This repository updates the pilot Casal2 krill model described in 'https://github.com/us-amlr/Casal2-krill-model'. The update uses 'r4Casal2_krill.r' to evaluate derived parameters for spawning stock biomass and calculates the CCAMLR 'depletion' and 'escapement' decision rules in order to define precautionary yield for the Antarctic krill fishery in CCAMLR Subarea 48.1. After 'r4Casal2_krill.r' is applied to the Casal2 output files the results can be plotted using 'r4Casal2_krilPLOTS.r'.
 
 'SSB_0K.a.pdf' is a plot of the spawning stock biomass estimates derived from MCMC sampling during the period from 1976-2021 with reported fishery catches in the model. Red points indicate the MPD estimates. All recruitment multipiers were initialized to 1.0 and zero future catches were projected forward from 2022 to 2041. 
 
