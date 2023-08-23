@@ -132,4 +132,3 @@ krill_mpd$Recruitment$model_year[17:36]
 krill_mpd$Recruitment$recruitment_multipliers[17:36]
 
 rhats[order(rhats,decreasing=TRUE)]
-median(cas2_tab$summary$values[[1]]) # B0
