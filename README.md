@@ -44,4 +44,4 @@ In a second set of runs, enter the recruitment variability from the first 0 catc
 
 Once the runs are finished the mcmc samples of the spawning biomass posterior distribution can be sampled and plotted, and the CCAMLR Decision rules applied, using 'r4Casal2_krill.r'. Paths in 'r4Casal2_krill.r' will need to be set to the local file structure. MPD values may be plotted using 'https://github.com/us-amlr/Casal2-krill-model/blob/main/R_krill_figs.rmd'.
 
-The rhats directory illustrates the effect of increasing MCMC sample size from 110,000 (25 minutes run time) to 11,000,000 (47 hours run time) on the Rhats diagnostic plot from the rstan library and on the CCAMLR decision rule for escapement.
+The rhats directory illustrates the effect of increasing MCMC sample size from 110,000 (25 minutes run time) to 3,300,000 (17 hours run time) on the Rhats diagnostic plot from the rstan library.
