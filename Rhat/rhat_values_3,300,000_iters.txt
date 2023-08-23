@@ -1,0 +1,39 @@
+> rhats[order(rhats,decreasing=TRUE)]
+                     selectivity[Fsh_lf_Sel].ato95 process[Recruitment].recruitment_multipliers{2017}                        selectivity[Fsh_lf_Sel].a50 
+                                         1.2427155                                          1.0255625                                          1.0254034 
+                       selectivity[Fsh_ac_Sel].a50 process[Recruitment].recruitment_multipliers{2021} process[Recruitment].recruitment_multipliers{2002} 
+                                         1.0203625                                          1.0162432                                          1.0135426 
+process[Recruitment].recruitment_multipliers{2001} process[Recruitment].recruitment_multipliers{2000} process[Recruitment].recruitment_multipliers{1992} 
+                                         1.0119416                                          1.0117937                                          1.0115965 
+process[Recruitment].recruitment_multipliers{1997} process[Recruitment].recruitment_multipliers{1995} process[Recruitment].recruitment_multipliers{1987} 
+                                         1.0098929                                          1.0088086                                          1.0087625 
+process[Recruitment].recruitment_multipliers{2004} process[Recruitment].recruitment_multipliers{1990} process[Recruitment].recruitment_multipliers{1977} 
+                                         1.0075731                                          1.0074332                                          1.0074044 
+process[Recruitment].recruitment_multipliers{2009} process[Recruitment].recruitment_multipliers{2010} process[Recruitment].recruitment_multipliers{2007} 
+                                         1.0067402                                          1.0061384                                          1.0059960 
+process[Recruitment].recruitment_multipliers{1986} process[Recruitment].recruitment_multipliers{1981} process[Recruitment].recruitment_multipliers{1993} 
+                                         1.0059845                                          1.0059734                                          1.0055751 
+process[Recruitment].recruitment_multipliers{2003} process[Recruitment].recruitment_multipliers{2012} process[Recruitment].recruitment_multipliers{1979} 
+                                         1.0051112                                          1.0046326                                          1.0041164 
+                     selectivity[Fsh_ac_Sel].ato95 process[Recruitment].recruitment_multipliers{1983}                     selectivity[AMLR_lf_Sel].ato95 
+                                         1.0034167                                          1.0031379                                          1.0030336 
+process[Recruitment].recruitment_multipliers{1978} process[Recruitment].recruitment_multipliers{1998} process[Recruitment].recruitment_multipliers{2016} 
+                                         1.0029471                                          1.0020586                                          1.0018791 
+                      selectivity[AMLR_ac_Sel].a50                       selectivity[AMLR_lf_Sel].a50 process[Recruitment].recruitment_multipliers{2011} 
+                                         1.0018503                                          1.0014983                                          1.0014980 
+process[Recruitment].recruitment_multipliers{1994}                            process[Recruitment].b0 process[Recruitment].recruitment_multipliers{2020} 
+                                         1.0014670                                          1.0012714                                          1.0011972 
+process[Recruitment].recruitment_multipliers{2008} process[Recruitment].recruitment_multipliers{1984} process[Recruitment].recruitment_multipliers{1991} 
+                                         1.0011598                                          1.0010157                                          1.0009444 
+process[Recruitment].recruitment_multipliers{2015}                     selectivity[AMLR_ac_Sel].ato95 process[Recruitment].recruitment_multipliers{2006} 
+                                         1.0003580                                          1.0002467                                          1.0000689 
+process[Recruitment].recruitment_multipliers{2013} process[Recruitment].recruitment_multipliers{2019} process[Recruitment].recruitment_multipliers{1996} 
+                                         0.9999882                                          0.9997247                                          0.9996269 
+process[Recruitment].recruitment_multipliers{1989} process[Recruitment].recruitment_multipliers{1985} process[Recruitment].recruitment_multipliers{1999} 
+                                         0.9993396                                          0.9986324                                          0.9981135 
+process[Recruitment].recruitment_multipliers{1982} process[Recruitment].recruitment_multipliers{1980} process[Recruitment].recruitment_multipliers{1976} 
+                                         0.9979740                                          0.9974830                                          0.9971043 
+process[Recruitment].recruitment_multipliers{2018} process[Recruitment].recruitment_multipliers{2005} process[Recruitment].recruitment_multipliers{2014} 
+                                         0.9969253                                          0.9966102                                          0.9940571 
+process[Recruitment].recruitment_multipliers{1988} 
+                                         0.9928236 
