@@ -1,10 +1,7 @@
-In a converged mcmc all estimated parameters should have rhat values < 1.1. 
+The rhat diagnostic indicates model convergence when the rhat values for all estimated parameters are less than 1.1. 
 
-'rhat_500K_110,000.pdf' shows the diagnostic from an earlier version of the krill model after 110,000 iterations, keeping every 1,000th, for 20-year projections with 500,000 tonnes removed annually. The MCMC required about 25 minutes running the three chains simultaneously. Three parameters had Rhat values ≥ 1.1, indicating they needed more mcmc samples to converge.  The parameter names for each line in the rhat plot were identified using 'rhats[order(rhats,decreasing=TRUE)]'. These were selectivity parameters '[FbiomSel].at50' (rhat = 1.46), '[AMLR_Sel].ato95' (1.38) and '[FbiomSel].ato95' (1.1).
+'rhat_600K_110,000_iters.pdf' shows the diagnostic after 110,000 MCMC samples, keeping every 1,000th, for 20-year projections with 600,000 tonnes removed annually. The MCMC required about 25 minutes running the three chains simultaneously. The parameter names for each line in the rhat plot were identified using 'rhats[order(rhats,decreasing=TRUE)]' (see file 'rhat_values_110,000_iters.txt'). One parameter, a selectivity parameter for fishery length-frequencies (selectivity[Fsh_lf_Sel].ato95) had an Rhat value of 1.62, indicating the model needed more MCMC samples to converge.  
 
-'rhat_500K_11,000,000.pdf' shows the rhat diagnostic from the earlier model after 11,000,000 iterations, keeping every 10,000th sample. These mcmcs required 47 hours to complete, running the three chains simultaneously. One selectivity parameter '[FbiomSel].a50' = 1.12 with all others < 1.05.
+'rhat_600K_3,300,000_iters.pdf' shows the diagnostic for 3,300,000 iterations. The rhat values of each estimated parameter are reported in 'rhat_values_3,300,000_iters.txt'. The fishery length-frequency parameter 'selectivity[Fsh_lf_Sel].ato95' decreased to 1.24 but remained above 1.1.
 
-
-'rhat_600K_3,300,000_iters.pdf' shows the diagnostic from the August 22, 2023 version of the model for 3,300,000 iterations.
-
-In most cases the parameters with rhat values > 1.1 are selectivity parameters.
+In most configurations of the model when parameters had rhat values > 1.1 they were selectivity parameters.
