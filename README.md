@@ -24,7 +24,7 @@ This difference of over 180 AIC between the configurations indicates the non-sim
 To run the models place three sets of the files in the 'biom' directory in differently labeled directories such as 'a', 'b' and 'c'. I label the directories with the projected future catches as well, i.e. '0K.a' for the first directory with 0 tonnes of future catches.
 
 Put 'casal2.exe', 'config.csl2' and the four compressed files in the 'dlls' directory in the three directories containing the 'biom' subdirectories.
-Run the 3 chains with all recruitment_multipliers in population.csl2 equal to 1.0 (each model will start at a different random seed) from the Windows console using the following commands (where 'localpath' is your path to the 'biom' directory):
+Run the 3 chains with all recruitment_multipliers in population.csl2 equal to 1.0 (each model will start at a different random seed) from the Windows console using the following commands:
 
 cd 'localpath'\biom
 
@@ -36,7 +36,7 @@ casal2 -m >> krill_mcmc.m.txt
 
 casal2 -r -i samples.1 -t >> krill_samples.txt
 
-where 'localpath' is the local path to each of the directories containing three 'biom' subdirectories and other files.
+where 'localpath' is the local path to each of the three directories containing 'biom' subdirectories with the Casal2 files.
 
 Each directory with identical input files will start from a different random seed, representing a separate mcmc chain. The default settings will take about 25 minutes to run for each chain. Model diagnostics such as the 'rhat'  included with 'r4Casal2_krill.r' and those in the R package 'coda' will improve with longer iterations. 
 
