@@ -5,7 +5,7 @@ This repository updates the pilot Casal2 krill model described in 'https://githu
 
 'SSB_0K.a.pdf' is a plot of the spawning stock biomass estimates derived from MCMC sampling during the period from 1976-2021 with reported fishery catches in the model. Red points indicate the MPD estimates. All recruitment multipiers were initialized to 1.0 and zero future catches were projected forward from 2022 to 2041. 
 
-'SSB_600K.a.pdf' shows the model spawning stock biomass with 600 tonnes annual yields projected forward from 2022 to 2041. Recruitment multipliers for the projection years were taken from the estimates for the observed years 1992 to 2011 as illustrated in 'SSB_600K.a.pdf'. The escapement decision rule values for the three chains for this 600,000 tonne catch model were between 0.76 and 0.77. These model outputs can be recreated using the files in this repository.
+'SSB_600K.a.pdf' shows the model spawning stock biomass with 600,000 tonnes annual yields projected forward from 2022 to 2041. Recruitment multipliers for the projection years were taken from the estimates for the observed years 1992 to 2011 as illustrated in 'SSB_600K.a.pdf'. The escapement decision rule values for the three chains for this model were between 0.76 and 0.77. These model outputs can be recreated using the files in this repository.
 
 The repository contains two alternative versions of the krill model. The output files for the first model are in the 'biom' directory and the input files are in 'biom/config'. The second model alternative uses the simplex transformation to estimate recruitment multipliers. Inputs and outputs for this configuration are found in the 'simplex_rec_multipliers' directory.
 
