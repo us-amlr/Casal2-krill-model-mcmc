@@ -11,7 +11,7 @@ The repository contains two alternative versions of the krill model. The output 
 
 The two configurations produce different results. Because the data and data weightings are the same for the two configurations, they can be compared using AIC. AIC = 2K -2ln(L) where K is the number of estimated parammeters and ln(L) is the log-likelihood. 
 
-In each of the two configurations the negative log-likelihood is reported in the 'krill.e.txt' file labeled as 'total_score'. This score is -181.115 for the non-simplex model and -87.5165 for the simplex model. The non-simplex model estimates 55 parameters and the non-simplex model estimates 53. Hence the non-simplex AIC score is:
+In each of the two configurations the negative log-likelihood is reported in the 'krill.e.txt' file labeled as 'total_score'. This score is -181.115 for the non-simplex model and -87.5165 for the simplex model. The simplex model estimates 55 parameters and the non-simplex model estimates 53. Hence the non-simplex AIC score is:
 
 (2 x 55) -(2 x 181.115) = -252.23 
 
