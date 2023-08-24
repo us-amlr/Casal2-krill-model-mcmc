@@ -9,7 +9,7 @@ This repository updates the pilot Casal2 krill model described in 'https://githu
 
 The repository contains two alternative versions of the krill model. The output files for the first model are in the 'biom' directory and the input files are in 'biom/config'. The second model alternative uses the simplex transformation to estimate recruitment multipliers. Inputs and outputs for this configuration are found in the 'simplex_rec_multipliers' directory.
 
-The two configurations produce different results. Because the data and data weightings are the same for the two configurations, they can be compared using AIC. AIC = 2K -2ln(L) where K is the number of estimated parammeters and ln(L) is the log-likelihood. 
+The two configurations produce different results. Because the data and data weightings are the same for the two configurations, they can be compared using AIC. AIC = 2K -2ln(L) where K is the number of estimated parameters and ln(L) is the log-likelihood. 
 
 In each of the two configurations the negative log-likelihood is reported in the 'krill.e.txt' file labeled as 'total_score'. This score is -181.115 for the non-simplex model and -87.5165 for the simplex model. The non-simplex model estimates 55 parameters and the simplex model estimates 53. Hence the non-simplex AIC score is:
 
