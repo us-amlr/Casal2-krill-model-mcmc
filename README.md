@@ -5,9 +5,8 @@ This repository updates the pilot Casal2 krill model described in 'https://githu
 
 The repository contains four alternative configurations of the krill model, 'combined non-simplex', 'combined simplex', 'separate non-simplex' and 'separate simplex'. These employ two different methods of estimating annual recruitment multipliers - simplex transformation and non-simplex - and two alternative approaches to modeling future projected catches, either with all model years combined into a single ‘@process Instantaneous_Mortality’ block, or with future catch years separated from past catch years into a second ‘@project future_catch’ block.
 
-To run the models place three sets of the files in the 'biom' directory in differently labeled directories such as 'a', 'b' and 'c'. I label the directories with the projected future catches as well, i.e. '0K.a' for the first directory with 0 tonnes of future catches.
+To run the configurationss I place the 'config' directory in one of the four github configuration directories into a local 'biom' directory. The 'biom' directory also gets the unzipped 'Casal.exe.zip' and 'dll.zip' files. The 'biom' directory will also contain the output files after a model run. To run multiple MCMC chains (I run three per configuration) put the same 'config', 'Casal2.exe' and '.dll' files in differently labeled directories such as 'a', 'b' and 'c'. I label the directories with the projected future catches as well, i.e. '0K.a' for the first directory with 0 tonnes of future catches. Each directory with identical input files will start from a different random seed, representing a separate mcmc chain. The default settings will take about 25 minutes to run for each chain. Model diagnostics such as the 'rhat'  included with 'r4Casal2_krill.r' and those in the R package 'coda' will improve with longer iterations of MCMC samples. 
 
-Put 'casal2.exe', 'config.csl2' and the four compressed files in the 'dlls' directory in the three directories containing the 'biom' subdirectories.
 Run the 3 chains with all recruitment_multipliers in population.csl2 equal to 1.0 (each model will start at a different random seed) from the Windows console using the following commands:
 
 cd 'localpath'\biom
@@ -22,7 +21,6 @@ casal2 -r -i samples.1 -t >> krill_samples.txt
 
 where 'localpath' is the local path to each of the three directories containing 'biom' subdirectories with the Casal2 files.
 
-Each directory with identical input files will start from a different random seed, representing a separate mcmc chain. The default settings will take about 25 minutes to run for each chain. Model diagnostics such as the 'rhat'  included with 'r4Casal2_krill.r' and those in the R package 'coda' will improve with longer iterations. 
 
 The runs with all recruitment_multipliers equal to 1 will produce a constant number of recruits and spawning stock biomass in the future projections. This will not provide a test of the CCAMLR depletion rule because there will be no variability in the future projections. In order to assess the depletion rule, recruitment fluctuations estimated from past data can be applied to the twenty year projection in a new model by starting the 20-year future projection with the recruitment variability estimates from the AMLR summer survey data from 1992-2011. Fishery catches during this period were generally small, under 150,000 tonnes/year.
 
