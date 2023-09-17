@@ -1,0 +1,235 @@
+# 'population.csl'
+#########################################
+# The Population definition for the model
+#########################################
+
+# The model definition. (This must be the first @command in the config files)
+@model
+start_year 1976 
+final_year 2041
+projection_final_year 2042
+min_age 1
+max_age 6
+age_plus true
+length_bins  1:66
+length_plus t
+#length_plus_group 66
+base_weight_units tonnes
+initialisation_phases Equilibrium_state
+time_steps Oct_Feb Mar_May Jun_Sep 
+
+# future projection
+@project Future_ycs 
+type lognormal_empirical 
+parameter process[Recruitment].recruitment_multipliers
+years 2022:2042
+start_year 1992
+final_year 2011
+multiplier 1
+
+# Categories
+@categories 
+format stock  ## Single sex and area population
+names KRILL 
+age_lengths age_size 
+
+@initialisation_phase Equilibrium_state
+type derived
+
+# Define the processes in the Annual Cycle
+@time_step Oct_Feb 
+processes Recruitment Instantaneous_Mortality
+
+@time_step Mar_May 
+processes Instantaneous_Mortality 
+
+@time_step Jun_Sep 
+processes  Ageing Instantaneous_Mortality
+
+#########################################
+## Define the Processes
+#########################################
+
+# Recruitment
+@process Recruitment
+type recruitment_beverton_holt
+categories KRILL
+proportions 1 
+b0 1e+07
+#ycs_years 1976:2021
+#standardise_ycs_years 1975:2009
+#standardise_years 1976:2041
+recruitment_multipliers   1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000   2.528590 1.290190 0.720081 0.224698 1.837230 1.831680 0.869399 0.447869 0.137565 0.340888 1.796400 2.579750 0.490174 0.293104 0.327973 1.559740 1.967750 0.895915 0.672923 1.523100
+
+steepness 0.9
+ssb SSB
+age 1
+
+# Ageing
+@process Ageing
+type ageing
+categories KRILL
+
+# Fishing and Natural Mortality
+@process Instantaneous_Mortality
+type mortality_instantaneous
+m 1.0
+time_step_proportions 0.33 0.33 0.34
+relative_m_by_age One
+categories KRILL
+table catches
+year K48.1 
+1976 276
+1977 92
+1978 0
+1979 0
+1980 49439
+1981 92859
+1982 69023
+1983 531
+1984 32128
+1985 11592
+1986 42113
+1987 70515
+1988 78918
+1989 105554
+1990 42477
+1991 64641
+1992 78385
+1993 37716
+1994 45085
+1995 35025
+1996 62384
+1997 51285
+1998 49837
+1999 38897
+2000 76984
+2001 52322
+2002 10700
+2003 32694
+2004 15643
+2005 7096
+2006 90570
+2007 15971
+2008 2582
+2009 34118
+2010 154330
+2011 9215
+2012 75823
+2013 153254
+2014 146438
+2015 154177
+2016 154441
+2017 149334
+2018 151677
+2019 155795
+2020 157081
+2021 161772
+2022 600000
+2023 600000
+2024 600000
+2025 600000
+2026 600000
+2027 600000
+2028 600000
+2029 600000
+2030 600000
+2031 600000
+2032 600000
+2033 600000
+2034 600000
+2035 600000
+2036 600000
+2037 600000
+2038 600000
+2039 600000
+2040 600000
+2041 600000
+end_table
+table method
+method  	category 	selectivity 	u_max 	time_step 		penalty
+K48.1   	KRILL  	 	Fsh_lf_Sel 	0.7 	Oct_Feb 		CatchMustBeTaken1
+end_table
+
+#########################################
+## Derived Quantities
+#########################################
+
+# SSB which gets feed into Recruitment
+@derived_quantity SSB
+type biomass
+time_step Oct_Feb
+categories KRILL
+time_step_proportion 0.5
+time_step_proportion_method weighted_sum
+selectivities MaturationSel
+
+#########################################
+# SELECTIVITIES
+#########################################
+
+@selectivity MaturationSel
+type all_values_bounded
+l 1
+h 6
+v 0.1	0.35	0.7	0.99	1.00  1.00	
+
+@selectivity Fsh_lf_Sel #Jan-Feb 48.1 fishery length-frequencies
+type logistic 
+a50 38 
+ato95  10
+length_based T
+intervals 5
+@selectivity AMLR_lf_Sel #Jan-Feb 48.1 AMLR trawl survey
+type logistic 
+a50 38 
+ato95  14
+length_based T
+intervals 5
+@selectivity AMLR_ac_Sel #Jan-Feb 48.1 AMLR acoustic survey (was AMLRbiomSel)
+type logistic 
+a50 38 
+ato95  10
+length_based T
+intervals 5
+@selectivity Fsh_ac_Sel #Jan-Feb 48.1 fishery acoustic survey
+type logistic 
+a50 38 
+ato95  10
+length_based T
+intervals 5
+@selectivity synopSel # Synoptic surveys 2000, 2019
+type logistic 
+a50 10 
+ato95  10
+length_based T
+intervals 5
+
+@selectivity One
+type constant 
+c 1
+
+#########################################
+## Length at age
+#########################################
+
+@age_length age_size
+type von_bertalanffy
+by_length true
+compatibility_option casal2
+k 0.48
+t0 0
+linf 60
+time_step_proportions 0.25 0.5 0.0
+length_weight Length_Weight
+
+#########################################
+## Weight at Length
+#########################################
+# from Hewitt et al. 2004 (eq. 3)
+
+@length_weight Length_Weight
+type basic
+units grams 
+a 2.236e-06 
+b 3.314

@@ -1,0 +1,64 @@
+# reports.csl2
+#####################################
+# The Report definition for the model
+#####################################
+
+@report summary
+type estimate_value
+
+@report profile
+type profile
+
+@report objective
+type objective_function
+
+# Print default reports
+@report default
+type default
+catchabilities true
+derived_quantities true
+observations true
+projects true
+processes true
+selectivities true
+parameter_transformations true
+
+
+@report Init
+type initialisation_partition
+
+#MCMC objectives
+@report objectives
+type MCMC_Objective
+file_name objectives
+write_mode incremental_suffix
+
+#MCMC samples
+@report samples
+type mcmc_sample
+file_name samples
+write_mode incremental_suffix
+
+@report Hessian
+type hessian_matrix
+
+@report MCMCcovariance
+type mcmc_covariance
+
+@report Fsh_lf_Sel 
+type selectivity 
+length_values 2  4  6  8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44  46  48  50  52  54  56  58  60  62  64 # 32 length-bins
+
+@report Fsh_ac_Sel 
+type selectivity 
+length_values 2  4  6  8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44  46  48  50  52  54  56  58  60  62  64 # 32 length-bins
+
+
+@report AMLR_ac_Sel
+type selectivity 
+length_values 2  4  6  8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44  46  48  50  52  54  56  58  60  62  64 # 32 length-bins
+
+
+@report AMLR_lf_Sel
+type selectivity 
+length_values 2  4  6  8  10  12  14  16  18  20  22  24  26  28  30  32  34  36  38  40  42  44  46  48  50  52  54  56  58  60  62  64 # 32 length-bins
