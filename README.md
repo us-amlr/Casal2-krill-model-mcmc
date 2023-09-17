@@ -3,23 +3,7 @@ MCMC sampling of recruitment, spawning stock biomass and the application of CCAM
  
 This repository updates the pilot Casal2 krill model described in 'https://github.com/us-amlr/Casal2-krill-model'. The update uses 'r4Casal2_krill.r' to evaluate derived parameters for spawning stock biomass and calculates the CCAMLR 'depletion' and 'escapement' decision rules in order to define precautionary yield for the Antarctic krill fishery in CCAMLR Subarea 48.1. After 'r4Casal2_krill.r' is applied to the Casal2 output files the results can be plotted using 'r4Casal2_krilPLOTS.r'.
 
-'SSB_0K.a.pdf' is a plot of the spawning stock biomass estimates derived from MCMC sampling during the period from 1976-2021 with reported fishery catches in the model. Red points indicate the MPD estimates of spawning biomass. Black lines represent the MCMC median and 95% CI estimates for spawning biomass. All recruitment multipiers were initialized to 1.0 and zero future catches were projected forward from 2022 to 2041.  
-
-'SSB_600K.a.pdf' shows the model spawning stock biomass with 600,000 tonnes annual yields projected forward from 2022 to 2041. Recruitment multipliers for the projection years were taken from the estimates for the observed years 1992 to 2011 as illustrated in 'SSB_600K.a.pdf'. The escapement decision rule values for the three chains for this model were between 0.76 and 0.77. These model outputs can be recreated using the files in this repository.
-
-The repository contains two alternative versions of the krill model. The output files for the first model are in the 'biom' directory and the input files are in 'biom/config'. The second model alternative uses the simplex transformation to estimate recruitment multipliers. Inputs and outputs for this configuration are found in the 'simplex_rec_multipliers' directory.
-
-The two configurations produce different results. Because the data and data weightings are the same for the two configurations, they can be compared using AIC. AIC = 2K -2ln(L) where K is the number of estimated parameters and ln(L) is the log-likelihood. 
-
-In each of the two configurations the negative log-likelihood is reported in the 'krill.e.txt' file labeled as 'total_score'. This score is -181.115 for the non-simplex model and -87.5165 for the simplex model. The non-simplex model estimates 55 parameters and the simplex model estimates 53. Hence the non-simplex AIC score is:
-
-(2 x 55) -(2 x 181.115) = -252.23 
-
-and the simplex score is:
-
-(2 x 53) -(2 x 87.5165) = -69.033.
-
-This difference of over 180 AIC between the configurations indicates the non-simplex model is a much better representation of these data than the simplex model.
+The repository contains four alternative configurations of the krill model, 'combined non-simplex', 'combined simplex', 'separate non-simplex' and 'separate simplex'. These employ two different methods of estimating annual recruitment multipliers - simplex transformation and non-simplex - and two alternative approaches to modeling future projected catches, either with all model years combined into a single ‘@process Instantaneous_Mortality’ block, or with future catch years separated from past catch years into a second ‘@project future_catch’ block.
 
 To run the models place three sets of the files in the 'biom' directory in differently labeled directories such as 'a', 'b' and 'c'. I label the directories with the projected future catches as well, i.e. '0K.a' for the first directory with 0 tonnes of future catches.
 
