@@ -89,7 +89,7 @@ table obs
 2020 10596979 0.1249
 end_table
 
-# observer length-proportions, with arbitrary error_values
+# observer length-proportions, with with number of hauls sampled as error_values
 @observation ProportionAtLength_Fshry
 categories KRILL 
 delta 1.0 
@@ -123,7 +123,7 @@ table error_values
 2019  6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
 end_table
 
-# AMLR survey length-proportions, with arbitrary error_values
+# AMLR survey length-proportions, with with number of hauls sampled as error_values
 @observation ProportionAtLength_trawl
 categories KRILL 
 delta 0.1 
@@ -183,7 +183,7 @@ table error_values
 2011 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114 114
 end_table
 
-# German survey length-proportions, with arbitrary error_values
+# German survey length-proportions, with with number of hauls sampled as error_values
 @observation ProportionAtLength_German
 categories KRILL 
 delta 0.1 
